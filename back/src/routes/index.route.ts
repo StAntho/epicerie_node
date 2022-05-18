@@ -2,7 +2,7 @@ import { Router } from 'express';
 import IndexController from '~controllers/index.controller';
 import { Routes } from '~interfaces/routes.interface';
 
-class IndexRoute implements Routes {
+export class IndexRoute implements Routes {
   public path = '/';
   public router = Router();
   public indexController = new IndexController();
@@ -17,4 +17,4 @@ class IndexRoute implements Routes {
   }
 }
 
-export default IndexRoute;
+// export default IndexRoute;

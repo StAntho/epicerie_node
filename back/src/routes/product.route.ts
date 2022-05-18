@@ -1,17 +1,25 @@
 import { Router } from 'express';
-import ProductsController from '~controllers/products.controller';
+import { ProductsController } from '~controllers';
+import { ProductsDto } from '~dto/product.dto';
 import { Routes } from '~interfaces/routes.interface';
 
-class ProdutsRoute implements Routes {
+const productsController = new ProductsController();
+const dto = new ProductsDto();
+export class ProdutsRoute implements Routes {
   public path = '/products';
   public router = Router();
-  public productsController = new ProductsController();
 
   constructor() {
     this.initializeRoutes();
   }
 
-  private initializeRoutes() {}
+  private initializeRoutes() {
+    this.router.get(`${this.path}/:id`, productsController.getProduct);
+    this.router.get(`${this.path}/`, productsController.getProducts);
+    this.router.post(`${this.path}/:id`, dto.createProduct, productsController.createProduct);
+    this.router.patch(`${this.path}/:id`, dto.updateProduct, productsController.updateProduct);
+    this.router.delete(`${this.path}/:id`, productsController.deleteProduct);
+  }
 }
 
-export default ProductsRoute;
+// export default ProductsRoute;

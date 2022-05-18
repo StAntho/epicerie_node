@@ -9,7 +9,6 @@ const productSchema: Schema = new Schema({
   price: {
     type: Number,
     required: true,
-    uppercase: true,
   },
   referralCode: {
     type: String,
