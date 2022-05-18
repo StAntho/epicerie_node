@@ -34,7 +34,7 @@ mongoose.connection.on('close', () => {
 });
 
 mongoose.connection.on('error', (error: any) => {
-  logger.error('DB ERROR', error.message);
+  logger.error('DB ERROR' + error.message);
 });
 
 class App {
