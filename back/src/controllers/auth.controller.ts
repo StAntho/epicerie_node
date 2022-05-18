@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { HttpException } from '~exceptions/HttpException';
 import { RequestWithUser } from '~interfaces/auth.interface';
-import { User } from '~interfaces/users.interface';
 import AuthService from '~services/auth.service';
 
 class AuthController {
@@ -38,3 +37,7 @@ class AuthController {
 }
 
 export default AuthController;
+
+// "jest": "^27.0.6",
+// "ts-jest": "^27.0.3",
+// "@types/jest": "^26.0.24",
