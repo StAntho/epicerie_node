@@ -17,6 +17,10 @@ export class ProductsService {
 
     newProduct.name = productData.name;
     newProduct.price = productData.price;
+    newProduct.qrcode = productData.qrcode;
+    newProduct.img = productData.img;
+
+    console.log('product:', newProduct);
 
     await newProduct.save();
 

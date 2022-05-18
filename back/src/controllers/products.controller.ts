@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { CreateProductData, PatchProductData } from '~interfaces/products.interface';
 import { ProductsService } from '~services';
 
@@ -7,14 +7,14 @@ export class ProductsController {
   getProduct = async (req: Request, res: Response) => {
     const productId = req.params.id;
 
-    const article = await productsService.getProduct(productId);
+    const product = await productsService.getProduct(productId);
 
-    res.json({ article });
+    res.json({ product });
   };
 
   getProducts = async (req: Request, res: Response) => {
-    const article = await productsService.getProducts();
-    res.json({ article });
+    const product = await productsService.getProducts();
+    res.json({ product });
   };
 
   createProduct = async (req: Request, res: Response, next: NextFunction) => {
@@ -22,7 +22,7 @@ export class ProductsController {
       const data: CreateProductData = req.body;
 
       const newProduct = await productsService.createProduct(data);
-      res.json({ article: newProduct });
+      res.json({ product: newProduct });
     } catch (error) {
       next(error);
     }
@@ -33,7 +33,7 @@ export class ProductsController {
     const data: PatchProductData = req.body;
 
     const newProduct = await productsService.updateProduct(productId, data);
-    res.json({ article: newProduct });
+    res.json({ product: newProduct });
   };
 
   deleteProduct = async (req: Request, res: Response) => {

@@ -10,10 +10,9 @@ const productSchema: Schema = new Schema({
     type: Number,
     required: true,
   },
-  referralCode: {
+  qrcode: {
     type: String,
     required: true,
-    uppercase: true,
   },
   img: {
     type: String,
