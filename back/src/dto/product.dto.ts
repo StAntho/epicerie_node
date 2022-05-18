@@ -32,20 +32,20 @@ export class ProductsDto {
         if (req.body.name.trim().length === 0) throw new HttpException(400, 'Name field can not be empty');
       }
       if (req.body.price) {
-        if (req.body.price !== 'number') throw new HttpException(400, 'Price has to be a number');
-        if (req.body.price > 0) throw new HttpException(400, 'Price has to be greater than 0');
+        if (typeof req.body.price !== 'number') throw new HttpException(400, 'Price has to be a number');
+        if (req.body.price < 0) throw new HttpException(400, 'Price has to be greater than 0');
       }
       if (req.body.qrcode) {
         if (req.body.qrcode.trim().length === 0) throw new HttpException(400, 'Qrcode field can not be empty');
       }
       if (req.body.img) {
-        if (req.body.img.trim().length === 0) throw new HttpException(400, 'img field can not be empty');
+        if (req.body.img.trim().length === 0) throw new HttpException(400, 'Img field can not be empty');
       }
       const data: PatchProductData = {};
-      if (req.body.name) data.name = req.body.trim();
+      if (req.body.name) data.name = req.body.name.trim();
       if (req.body.price) data.price = req.body.price;
-      if (req.body.qrcode) data.qrcode = req.body;
-      if (req.body.img) data.img = req.body.trim();
+      if (req.body.qrcode) data.qrcode = req.body.qrcode.trim();
+      if (req.body.img) data.img = req.body.img.trim();
 
       req.body = data;
       next();
