@@ -1,19 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import Router from "./Router/Router";
-import ProductPage from "./view/Product";
-import Footer from "./common/Footer";
+import Router from "./router/Router";
 import Header from "./common/Header";
-import { Route } from "react-router-dom";
+import Footer from "./common/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Header />
-    <ProductPage />
+    <Router />
     <Footer />
   </React.StrictMode>
 );

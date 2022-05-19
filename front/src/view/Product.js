@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ReactDOM from "react-dom";
-import { QRCodeSVG } from "qrcode.react";
-
 import axios from "axios";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
 
-  let history = useNavigate();
+  let navigate = useNavigate();
 
   useEffect(() => {
     // call api or anything
@@ -22,26 +19,33 @@ const ProductPage = () => {
 
     axios
       .get("http://127.0.0.1:3000/products")
-      .then((response) => {
+      .then(response => {
         let obj = response.data;
         console.log(obj.product);
         setProducts(obj.product);
       })
-      .catch((error) => {
+      .catch(error => {
         alert(error);
       });
   };
 
-  const redirectToOneProduct = (productId) => {
-    history.push({ pathname: "./OneProduct", state: { productId: productId } });
-  };
+  function redirectToReport(productId) {
+    navigate("/product/" + productId, { state: productId }); // ??? I'm not sure if this is the right way
+  }
 
   return (
     <div className="product list">
       <ul>
-        {products.map((product) => (
-          <li onClick={redirectToOneProduct(product._id)}>
+        {products.map(product => (
+          <li>
             {product.name}, {product.price}€ <img src={product.img} />
+            <a
+              onClick={() => {
+                redirectToReport(product._id);
+              }}
+            >
+              {product.name}
+            </a>
           </li>
         ))}
       </ul>
