@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import ReactDOM from "react-dom";
 import { QRCodeSVG } from "qrcode.react";
@@ -9,7 +9,7 @@ import axios from "axios";
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
 
-  let history = useHistory();
+  let history = useNavigate();
 
   useEffect(() => {
     // call api or anything
