@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { HttpException } from '~exceptions/HttpException';
+// import { HttpException } from '~exceptions/HttpException';
 // import { RequestWithUser } from '~interfaces/auth.interface';
 // import { User } from '~interfaces/users.interface';
 // import AuthService from '~services/auth.service';
@@ -36,10 +36,17 @@ export class UsersController {
     }
   };
 
-  authenticate = async (req: Request, res: Response) => {
-    const user = req.body;
-    const token = jsonwebtoken.sign({ id: user._id }, 'secret');
-    return res.status(200).json({ message: 'Success', user: user, token: token });
+  authenticate = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const user = req.body;
+      const token = jsonwebtoken.sign({ id: user._id }, 'secret');
+
+      return res.json({ message: 'Success', user: user, token: token });
+    } catch (error) {
+      console.log('ERROR', error);
+
+      next(error);
+    }
   };
 
   updateUser = async (req: Request, res: Response) => {

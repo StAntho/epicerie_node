@@ -9,12 +9,15 @@ import App from '~app';
 import { ProductsRoute, UsersRoute } from '~routes';
 import validateEnv from '~utils/validateEnv';
 
-validateEnv();
+try {
+  validateEnv();
 
-const app = new App([
-  new ProductsRoute(),
-  new UsersRoute(),
-  /*new IndexRoute(), new AuthRoute(), new UsersRoute(), new WaitingListRoute()*/
-]);
-
-app.listen();
+  const app = new App([
+    new ProductsRoute(),
+    new UsersRoute(),
+    /*new IndexRoute(), new AuthRoute(), new UsersRoute(), new WaitingListRoute()*/
+  ]);
+  app.listen();
+} catch (error) {
+  console.log('ERROR');
+}

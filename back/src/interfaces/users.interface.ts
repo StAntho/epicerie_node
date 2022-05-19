@@ -9,6 +9,7 @@ export interface User_I {
   password: string;
   // firebaseUID: string;
   createdAt: Date;
+  comparePassword: (candidatePassword: string) => boolean;
 }
 
 export interface CreateUser {

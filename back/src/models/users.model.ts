@@ -1,8 +1,8 @@
-import { model, Schema } from 'mongoose';
+import { model, Schema, Document } from 'mongoose';
 import { UserDocument } from '~interfaces/users.interface';
 import bcrypt from 'bcrypt';
 
-const userSchema: Schema = new Schema({
+const schema: Schema = new Schema({
   username: {
     type: String,
     required: true,
@@ -36,9 +36,28 @@ export async function encryptPassword(password: string) {
   return hashed;
 }
 
-export const validPassword = async function (candidatePassword: string) {
-  const result = bcrypt.compare(candidatePassword, this.password);
-  return result;
+schema.pre('save', function (next) {
+  const user: UserDocument = this as UserDocument;
+
+  if (!user.isModified('password')) return next();
+
+  if (user.password) {
+    bcrypt.genSalt(10, function (err, salt) {
+      if (err) return next(err);
+      bcrypt.hash(user.password, salt, (err, hash) => {
+        if (err) return next(err);
+        user.password = hash;
+
+        next();
+      });
+    });
+  }
+});
+
+schema.methods.comparePassword = function (candidatePassword) {
+  const user: UserDocument = this as UserDocument;
+
+  return bcrypt.compareSync(candidatePassword, user.password);
 };
 
-export const User = model<UserDocument>('User', userSchema);
+export const User = model<UserDocument>('User', schema);

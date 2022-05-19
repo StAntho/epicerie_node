@@ -1,5 +1,6 @@
 import { CreateUser, PatchUserData } from '~interfaces/users.interface';
-import { User, encryptPassword, validPassword } from '~models';
+import { User, encryptPassword } from '~models';
+import { HttpException } from '~exceptions/HttpException';
 
 export class UserService {
   getUser = async (userId: string) => {
@@ -15,21 +16,17 @@ export class UserService {
   authenticate = async ({ username, password }) => {
     const user = await User.findOne({ username: username });
 
-    if (!user) return null;
-
-    if (validPassword(password)) {
-      return user;
-    }
+    if (!user) throw new HttpException(404, 'User not found');
+    if (!user.comparePassword(password)) throw new HttpException(400, 'Wrong password');
 
     return user;
   };
 
-  createUser = async (user: CreateUser) => {
+  createUser = async ({ username, password }: CreateUser) => {
     const newUser = new User();
 
-    newUser.username = user.username;
-
-    newUser.password = await encryptPassword(user.password);
+    newUser.username = username;
+    newUser.password = password;
 
     await newUser.save();
 
