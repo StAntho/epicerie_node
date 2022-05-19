@@ -2,6 +2,7 @@ import { HttpException } from '~exceptions/HttpException';
 import { NextFunction, Request, Response } from 'express';
 import { CreateUser } from '~interfaces/users.interface';
 import { UserService } from '~services';
+import jsonwebtoken from 'jsonwebtoken';
 
 const usersService = new UserService();
 export class UsersDto {
@@ -44,6 +45,7 @@ export class UsersDto {
     if (!user) {
       return res.status(401).json({ message: 'Invalid Authentication Credentials' });
     }
-    return res.status(200).json({ message: 'Success', user: user });
+    const token = jsonwebtoken.sign({ id: username }, 'secret');
+    return res.status(200).json({ message: 'Success', user: user, token: token });
   };
 }
