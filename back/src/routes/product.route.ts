@@ -5,7 +5,7 @@ import { Routes } from '~interfaces/routes.interface';
 
 const productsController = new ProductsController();
 const dto = new ProductsDto();
-export class ProdutsRoute implements Routes {
+export class ProductsRoute implements Routes {
   public path = '/products';
   public router = Router();
 
@@ -16,10 +16,8 @@ export class ProdutsRoute implements Routes {
   private initializeRoutes() {
     this.router.get(`${this.path}/:id`, productsController.getProduct);
     this.router.get(`${this.path}/`, productsController.getProducts);
-    this.router.post(`${this.path}/:id`, dto.createProduct, productsController.createProduct);
+    this.router.post(`${this.path}/`, dto.createProduct, productsController.createProduct);
     this.router.patch(`${this.path}/:id`, dto.updateProduct, productsController.updateProduct);
     this.router.delete(`${this.path}/:id`, productsController.deleteProduct);
   }
 }
-
-// export default ProductsRoute;

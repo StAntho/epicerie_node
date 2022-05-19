@@ -5,7 +5,7 @@ export interface Product_I {
   _id: string;
   name: string;
   price: number;
-  referralCode: string;
+  qrcode: string;
   img: string;
   createdAt: Date;
 }
@@ -13,9 +13,13 @@ export interface Product_I {
 export interface CreateProductData {
   name: string;
   price: number;
+  qrcode: string;
+  img: string;
 }
 
 export interface PatchProductData {
   name?: string;
   price?: number;
+  qrcode?: string;
+  img?: string;
 }

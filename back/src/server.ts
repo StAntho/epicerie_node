@@ -6,13 +6,13 @@ import App from '~app';
 // import IndexRoute from '~routes/index.route';
 // import UsersRoute from '~routes/users.route';
 // import WaitingListRoute from '~routes/waiting-list.route';
-import { ProductsRoutes } from '~routes';
+import { ProductsRoute } from '~routes';
 import validateEnv from '~utils/validateEnv';
 
 validateEnv();
 
 const app = new App([
-  new ProductsRoutes(),
+  new ProductsRoute(),
   /*new IndexRoute(), new AuthRoute(), new UsersRoute(), new WaitingListRoute()*/
 ]);
 

@@ -1,5 +1,5 @@
-import { model, Schema, Document } from 'mongoose';
-import { Product } from '~interfaces/users.interface';
+import { model, Schema } from 'mongoose';
+import { ProductDocument } from '~interfaces/products.interface';
 
 const productSchema: Schema = new Schema({
   name: {
@@ -10,10 +10,9 @@ const productSchema: Schema = new Schema({
     type: Number,
     required: true,
   },
-  referralCode: {
+  qrcode: {
     type: String,
     required: true,
-    uppercase: true,
   },
   img: {
     type: String,
@@ -25,6 +24,4 @@ const productSchema: Schema = new Schema({
   },
 });
 
-const productModel = model<Product & Document>('Product', productSchema);
-
-export default productModel;
+export const Product = model<ProductDocument>('Product', productSchema);

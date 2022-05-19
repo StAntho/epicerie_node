@@ -13,7 +13,7 @@ const authMiddleware = async (req: RequestWithUser, res: Response, next: NextFun
     if (Authorization) {
       const decodedToken: any = await fb.auth().verifyIdToken(Authorization);
       if (!decodedToken) {
-        throw new HttpException(400, `Sorry, invalid or expired token`);
+        throw new HttpException(400, 'Sorry, invalid or expired token');
       }
 
       const firebaseUID: string = decodedToken.user_id;

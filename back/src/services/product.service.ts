@@ -1,42 +1,38 @@
-import { CreateProductData } from '~interfaces/product.interface';
+import { CreateProductData, PatchProductData } from '~interfaces/products.interface';
 import { Product } from '~models';
 
 export class ProductsService {
   getProduct = async (productId: string) => {
-    const product = await productId.findById(productId).lean();
+    const product = await Product.findById(productId).lean();
     return product;
   };
 
   getProducts = async () => {
-    const products = await ProductsService.find().lean();
+    const products = await Product.find().lean();
     return products;
   };
 
-  createProduct = async (articleDate: CreateProductData) => {
+  createProduct = async (productData: CreateProductData) => {
     const newProduct = new Product();
 
-    newProduct.name = productDate.name;
-    newProduct.price = productDate.price;
+    newProduct.name = productData.name;
+    newProduct.price = productData.price;
+    newProduct.qrcode = productData.qrcode;
+    newProduct.img = productData.img;
+
+    console.log('product:', newProduct);
 
     await newProduct.save();
 
     return newProduct;
   };
 
-  updateProduct = async (productId: string, articleData: PatchProductData) => {
-    //   const product = await ProductService.findById(productId);
-
-    //   articleData.name = articleData.name;
-    //   articleData.price = articleData.price;
-    //   await articleData.save();
-
-    const product = await Product.updateOne({ _id: productId }, { ...articleData }, { new: true });
-    return articleData;
+  updateProduct = async (productId: string, productData: PatchProductData) => {
+    const product = await Product.updateOne({ _id: productId }, { ...productData }, { new: true });
+    return product;
   };
 
   deleteProduct = async (productId: string) => {
     await Product.deleteOne({ _id: productId });
   };
 }
-
-// export default ProductService;
