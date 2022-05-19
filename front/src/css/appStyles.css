@@ -1,3 +1,51 @@
-footer{
-    background-color: orange;
+.footer{
+    background-color: rgb(146, 51, 7);
+    color: white;
+    text-align: center;
+    height: 15vw;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    
 }
+
+.footerText{
+    color:white;
+    text-decoration: underline rgb(146, 51, 7);
+}
+
+.footerText:hover{
+    text-decoration: underline !important;
+}
+
+.accountBar{
+
+    background-color: rgb(146, 51, 7);
+    text-align: right;
+    width:100%;
+    height: 5vw;
+}
+
+
+.login-button{
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: rgb(146, 51, 7);
+    color: white;
+    font-size: 18px;
+    padding: 5px;
+    margin-right: 5vw;
+    margin-top: 5%;
+    
+}
+
+a .login-button {
+    text-decoration: none;
+}
+
+.login-button:hover{
+    border: 2px solid rgb(146, 51, 7);
+    background-color: white;
+    color: rgb(146, 51, 7);
+}
+

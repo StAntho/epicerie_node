@@ -1,12 +1,5 @@
 import React from "react";
-{
-  /*import { useNavigate } from "react-router-dom";
-import { Icon } from "@iconify/react";*/
-}
-
-{
-  /*import styles from "../../../css/nav.module.css";*/
-}
+import styles from "../css/appStyles.css";
 
 export default function AccountBar() {
   let button = (button) => {
@@ -14,7 +7,11 @@ export default function AccountBar() {
     if (isLoggedIn) {
       return <button>{localStorage.getItem("firstName")}</button>;
     }
-    return <button href="login">se connecter</button>;
+    return (
+      <a href="login" className="login-button">
+        se connecter
+      </a>
+    );
   };
 
   let logout = (logoutButton) => {
@@ -22,7 +19,6 @@ export default function AccountBar() {
     if (isLoggedIn) {
       return <button onClick={loginAction}>se déconnecter</button>;
     }
-    return <button href="login">s'inscrire</button>;
   };
 
   const loginAction = () => {
@@ -32,15 +28,10 @@ export default function AccountBar() {
 
   return (
     <>
-      <div>
+      <div className="accountBar">
         {button()}
         {logout()}
       </div>
     </>
   );
-}
-
-{
-  /*className={styles.accountBar}*/
-  /*className={styles.accountBarConnection}*/
 }
