@@ -1,11 +1,22 @@
 import { Document } from 'mongoose';
 
-export type UserDocument = User & Document;
-export interface User {
+export type UserDocument = User_I & Document;
+export interface User_I {
   _id: string;
-  referralCode: string;
-  pushToken: string;
-  email: string;
-  firebaseUID: string;
+  // referralCode: String;
+  // pushToken: String;
+  username: string;
+  password: string;
+  // firebaseUID: string;
   createdAt: Date;
+}
+
+export interface CreateUser {
+  username: string;
+  password: string;
+}
+
+export interface PatchUserData {
+  username?: string;
+  password?: string;
 }

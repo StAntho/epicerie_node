@@ -1,17 +1,20 @@
 import { Router } from 'express';
-import UsersController from '~controllers/users.controller';
+import { UsersController } from '~controllers/users.controller';
 import { Routes } from '~interfaces/routes.interface';
+import { UsersDto } from '~dto/users.dto';
 
-class UsersRoute implements Routes {
+const usersController = new UsersController();
+const dto = new UsersDto();
+export class UsersRoute implements Routes {
   public path = '/users';
   public router = Router();
-  public usersController = new UsersController();
 
   constructor() {
     this.initializeRoutes();
   }
 
-  private initializeRoutes() {}
+  private initializeRoutes() {
+    this.router.post(`${this.path}/`, usersController.register);
+    this.router.post(`${this.path}/login`, dto.basicAuth);
+  }
 }
-
-export default UsersRoute;

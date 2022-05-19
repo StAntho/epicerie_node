@@ -1,27 +1,44 @@
-import { model, Schema, Document } from 'mongoose';
-import { User } from '~interfaces/users.interface';
+import { model, Schema } from 'mongoose';
+import { UserDocument } from '~interfaces/users.interface';
+import bcrypt from 'bcrypt';
 
 const userSchema: Schema = new Schema({
-  email: {
+  username: {
     type: String,
     required: true,
   },
-  referralCode: {
-    type: String,
-    required: true,
-    uppercase: true,
-  },
-  pushToken: String,
-  firebaseUID: {
+  password: {
     type: String,
     required: true,
   },
+  // referralCode: {
+  //   type: string,
+  //   required: true,
+  //   uppercase: true,
+  // },
+  // pushToken: string,
+  // firebaseUID: {
+  //   type: string,
+  //   required: true,
+  // },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-const userModel = model<User & Document>('User', userSchema);
+/*
+  Méthode pour valider et crypter le mot de passe
+*/
+export async function encryptPassword(password: string) {
+  const salt = await bcrypt.genSalt(5);
+  const hashed = await bcrypt.hash(password, salt);
+  return hashed;
+}
 
-export default userModel;
+export const validPassword = async function (candidatePassword: string) {
+  const result = bcrypt.compare(candidatePassword, this.password);
+  return result;
+};
+
+export const User = model<UserDocument>('User', userSchema);
