@@ -1,15 +1,15 @@
 import React from "react";
-import styles from "../css/appStyles.css";
+import styles from "../css/header.css";
 
 export default function AccountBar() {
   let button = (button) => {
     const isLoggedIn = localStorage.getItem("firstName");
     if (isLoggedIn) {
-      return <button>{localStorage.getItem("firstName")}</button>;
+      return <button className="login-button">{localStorage.getItem("firstName")}</button>;
     }
     return (
       <a href="login" className="login-button">
-        se connecter
+        Se connecter
       </a>
     );
   };
@@ -17,7 +17,7 @@ export default function AccountBar() {
   let logout = (logoutButton) => {
     const isLoggedIn = localStorage.getItem("firstName");
     if (isLoggedIn) {
-      return <button onClick={loginAction}>se déconnecter</button>;
+      return <button className="login-button" onClick={loginAction}>Se déconnecter</button>;
     }
   };
 
@@ -29,6 +29,7 @@ export default function AccountBar() {
   return (
     <>
       <div className="accountBar">
+        <h1 className="headerTitle"> La petite épicerie</h1>
         {button()}
         {logout()}
       </div>

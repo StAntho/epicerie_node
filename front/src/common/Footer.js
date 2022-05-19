@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../src/assets/LaPetiteEpicerie_Logo.png";
-import styles from "../css/appStyles.css";
+import styles from "../css/footer.css";
 
 export default function Footer() {
   return (

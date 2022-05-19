@@ -5,12 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ProductPage from "./view/Product";
 import Footer from "./common/Footer";
-import AccountBar from "./common/AccountBar";
+import Header from "./common/Header";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AccountBar />
+    <Header />
     <ProductPage />
     <Footer />
   </React.StrictMode>
