@@ -13,14 +13,15 @@ export class UserService {
   };
 
   authenticate = async ({ username, password }) => {
-    const user = await User.find({ username: username });
-    if (user.length !== 0) {
-      console.log('user:', user);
-      if (validPassword(password)) {
-        return user;
-      }
+    const user = await User.findOne({ username: username });
+
+    if (!user) return null;
+
+    if (validPassword(password)) {
+      return user;
     }
-    return null;
+
+    return user;
   };
 
   createUser = async (user: CreateUser) => {

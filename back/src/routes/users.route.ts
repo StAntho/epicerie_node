@@ -15,6 +15,6 @@ export class UsersRoute implements Routes {
 
   private initializeRoutes() {
     this.router.post(`${this.path}/`, usersController.register);
-    this.router.post(`${this.path}/login`, dto.basicAuth);
+    this.router.post(`${this.path}/login`, dto.basicAuth, usersController.authenticate);
   }
 }

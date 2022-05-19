@@ -2,7 +2,6 @@ import { HttpException } from '~exceptions/HttpException';
 import { NextFunction, Request, Response } from 'express';
 import { CreateUser } from '~interfaces/users.interface';
 import { UserService } from '~services';
-import jsonwebtoken from 'jsonwebtoken';
 
 const usersService = new UserService();
 export class UsersDto {
@@ -26,7 +25,7 @@ export class UsersDto {
     }
   };
 
-  basicAuth = async (req, res: Response, next: NextFunction) => {
+  basicAuth = async (req: Request, res: Response, next: NextFunction) => {
     // check for basic auth header
     console.log('basicAuth called');
     if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
@@ -42,10 +41,11 @@ export class UsersDto {
       return res.status(401).json({ message: 'Missing username field  ' });
     }
     const user = await usersService.authenticate({ username, password });
+
     if (!user) {
       return res.status(401).json({ message: 'Invalid Authentication Credentials' });
     }
-    const token = jsonwebtoken.sign({ id: username }, 'secret');
-    return res.status(200).json({ message: 'Success', user: user, token: token });
+    req.body = user;
+    next();
   };
 }

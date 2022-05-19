@@ -5,6 +5,7 @@ import { HttpException } from '~exceptions/HttpException';
 // import AuthService from '~services/auth.service';
 import { UserService } from '~services';
 import { CreateUser, PatchUserData } from '~interfaces/users.interface';
+import jsonwebtoken from 'jsonwebtoken';
 
 const usersService = new UserService();
 export class UsersController {
@@ -33,6 +34,12 @@ export class UsersController {
     } catch (error) {
       next(error);
     }
+  };
+
+  authenticate = async (req: Request, res: Response) => {
+    const user = req.body;
+    const token = jsonwebtoken.sign({ id: user._id }, 'secret');
+    return res.status(200).json({ message: 'Success', user: user, token: token });
   };
 
   updateUser = async (req: Request, res: Response) => {
