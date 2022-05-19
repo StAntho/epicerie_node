@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-//import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import ReactDOM from "react-dom";
-import { QRCodeSVG } from "qrcode.react";
+import ReactDOM from 'react-dom';
+import { QRCodeSVG } from 'qrcode.react';
 
-import axios from "axios";
+import axios from 'axios';
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
 
-  //let history = useHistory();
+  let history = useHistory();
 
   useEffect(() => {
     // call api or anything
@@ -21,7 +21,7 @@ const ProductPage = () => {
     //let token = localStorage.getItem("token");
 
     axios
-      .get("http://127.0.0.1:3000/products")
+      .get('http://127.0.0.1:3000/products')
       .then((response) => {
         let obj = response.data;
         console.log(obj.product);
@@ -32,11 +32,15 @@ const ProductPage = () => {
       });
   };
 
+  const redirectToOneProduct = (productId) => {
+    history.push({ pathname: './OneProduct', state: { productId: productId } });
+  };
+
   return (
     <div className="product list">
       <ul>
         {products.map((product) => (
-          <li>
+          <li onClick={redirectToOneProduct(product._id)}>
             {product.name}, {product.price} <img src={product.img} />
           </li>
         ))}
