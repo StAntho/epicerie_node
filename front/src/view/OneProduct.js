@@ -35,7 +35,9 @@ const OneProductPage = () => {
     <div className="product show">
       <p>Votre produit:</p>
       <QRCodeSVG value={"http://192.168.0.14:3001/product/" + product._id} />
-      <p>{product.name}</p>
+      <p>name: {product.name}</p>
+      <p>prix: {product.price}€</p>
+      <img src={product.img} />
     </div>
   );
 };
