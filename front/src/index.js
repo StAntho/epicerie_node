@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
-import Router from "./router/Router";
-import Header from "./common/Header";
-import Footer from "./common/Footer";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import Router from './Router/Router';
+import Header from './common/Header';
+import Footer from './common/Footer';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
