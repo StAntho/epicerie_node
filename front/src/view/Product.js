@@ -11,6 +11,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     // call api or anything
+    if (!localStorage.getItem("token")) navigate("/");
     getAllProducts();
   }, []);
 

@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import '../css/home.css';
-import img from '../assets/market.jpg';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "../css/home.css";
+import img from "../assets/market.jpg";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // call api or anything
+    if (localStorage.getItem("token")) navigate("/products");
+  }, []);
 
   return (
     <div className="home">
