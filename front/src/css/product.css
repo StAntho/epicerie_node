@@ -44,3 +44,8 @@
     flex-direction: column;
     text-align: center;
 }
+
+.product-seemore-button{
+    width : 50% !important;
+
+}
