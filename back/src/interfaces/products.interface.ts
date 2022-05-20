@@ -13,7 +13,7 @@ export interface Product_I {
 export interface CreateProductData {
   name: string;
   price: number;
-  qrcode: string;
+  qrcode: generateQrcode();
   img: string;
 }
 

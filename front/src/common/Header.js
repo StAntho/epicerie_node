@@ -27,9 +27,9 @@ export default function AccountBar() {
 
   let addproductbutton = (addproductbutton) => {
     const isLoggedIn = localStorage.getItem("username");
-    if (isLoggedIn) {
-      return <AddProduct />;
-    }
+    // if (isLoggedIn) {
+    //   return <AddProduct />;
+    // }
   };
 
   let logout = (logoutButton) => {

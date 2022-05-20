@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import "../css/product.css";
-import AddProduct from "./AddProduct";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);

@@ -1,5 +1,5 @@
 var QRCode = require('qrcode');
 
-QRCode.toDataURL('coucou', function (err, url) {
-  console.log(url);
+QRCode.toDataURL('https://fr.reactjs.org/', function (err, url) {
+  console.log('url:' + url);
 });
