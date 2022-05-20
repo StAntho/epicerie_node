@@ -43,8 +43,8 @@ const ProductPage = () => {
           // }
           <div className="productCart">
             <div className="leftImage">
-              <h3 class="productHeader">{product.name}</h3> <br />
-              <p class="productPrice">{product.price} €</p><br />
+              <h3 class="productHeader">{product.name}</h3>   
+              <p class="productPrice">{product.price} €</p>
               <img className="productImg" src={product.img} />
             </div>
             <div className="centerText">
