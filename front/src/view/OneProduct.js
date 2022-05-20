@@ -23,7 +23,7 @@ const OneProductPage = () => {
 
     console.log();
     axios
-      .get("http://127.0.0.1:3000/products/" + productId)
+      .get("http://192.168.43.60:3000/products/" + productId)
       .then((response) => {
         let obj = response.data;
         console.log(obj.product);
@@ -41,7 +41,7 @@ const OneProductPage = () => {
         <img src={product.img} />
       </div>
       <p className="productprice">Prix du produit : {product.price}€</p>
-      <QRCodeSVG value={"http://192.168.0.14:3001/product/" + product._id} />
+      <QRCodeSVG value={"http://192.168.43.60:3001/product/" + product._id} />
     </div>
   );
 };
