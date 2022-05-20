@@ -32,7 +32,7 @@ const ProductPage = () => {
   };
 
   function redirectToReport(productId) {
-    navigate("/product/" + productId, { state: productId }); // ??? I'm not sure if this is the right way
+    navigate("/product/" + productId, { state: { productId } }); // ??? I'm not sure if this is the right way
   }
 
   return (
@@ -65,6 +65,7 @@ const ProductPage = () => {
               quis. Fusce sit amet mi semper orci lobortis maximus quis non
               arcu. Mauris eleifend aliquet vulputate.
             </p>
+
             <a
               className="login-button product-seemore-button"
               onClick={() => {
