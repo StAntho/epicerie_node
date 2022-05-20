@@ -1,0 +1,14 @@
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 420px) {
+    .oneproduct-img img{
+        width: 75% !important;
+        display: block;
+        margin: auto;
+        margin-bottom: 5%;
+        box-shadow: 2px 2px 2px black;
+    }
+
+    .productname, .productprice{
+        text-align: center;
+    }
+}

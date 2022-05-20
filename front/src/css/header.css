@@ -42,6 +42,26 @@
     background-color:white !important;
     color: #417D7A!important;
     text-shadow: none;
+}
 
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 420px) {
+    .accountBar{
+        height: 15vh !important;
+    }
+
+    .headerTitle {
+        text-align: left;
+        font-size: 2em;
+        margin-left: 3%;
+    }
+
+    .login-button{
+        
+      width: 50% !important;
+      margin-left: 2% !important;
+      height: 25%;
+
+    }
 }
 

@@ -9,7 +9,7 @@
 
 .footerText{
     color:white;
-    text-decoration: underline rgb(146, 51, 7);
+    text-decoration: underline white;
 }
 
 .footerText:hover{
@@ -46,5 +46,13 @@ a .login-button {
     border: 2px solid rgb(146, 51, 7);
     background-color: white;
     color: rgb(146, 51, 7);
+}
+
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 420px) {
+    .footer{
+        margin-top: 3% !important;
+    }
 }
 

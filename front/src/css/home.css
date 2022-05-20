@@ -41,3 +41,11 @@ h3 {
   width: 40vw;
   margin: 2vw;
 }
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 420px) {
+  .info{
+    position:inherit !important;
+  }
+
+}
