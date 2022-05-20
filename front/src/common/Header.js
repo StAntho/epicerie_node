@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../css/header.css";
 
 export default function AccountBar() {
-  let button = (button) => {
-    const isLoggedIn = localStorage.getItem("firstName");
+  useEffect(() => {
+    // call api or anything
+    button();
+    logout();
+  }, []);
+
+  let button = button => {
+    const isLoggedIn = localStorage.getItem("username");
     if (isLoggedIn) {
-      return <button className="login-button">{localStorage.getItem("firstName")}</button>;
+      return (
+        <button className="login-button">
+          {localStorage.getItem("username")}
+        </button>
+      );
     }
     return (
       <a href="login" className="login-button">
@@ -14,15 +24,20 @@ export default function AccountBar() {
     );
   };
 
-  let logout = (logoutButton) => {
-    const isLoggedIn = localStorage.getItem("firstName");
+  let logout = logoutButton => {
+    const isLoggedIn = localStorage.getItem("username");
     if (isLoggedIn) {
-      return <button className="login-button" onClick={loginAction}>Se déconnecter</button>;
+      return (
+        <button className="login-button" onClick={loginAction}>
+          Se déconnecter
+        </button>
+      );
     }
   };
 
   const loginAction = () => {
-    localStorage.removeItem("firstName");
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
     window.location.reload(false);
   };
 

@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 //import { useHistory } from "react-router-dom";
 import styles from "../css/product.css";
 
 import ReactDOM from "react-dom";
 import { QRCodeSVG } from "qrcode.react";
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> 3b548b8a2da9c3638c02008822088d710d4cdd73
 
 import axios from "axios";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
 
-  //let history = useHistory();
+  let navigate = useNavigate();
 
   useEffect(() => {
     // call api or anything
@@ -23,15 +27,19 @@ const ProductPage = () => {
 
     axios
       .get("http://127.0.0.1:3000/products")
-      .then((response) => {
+      .then(response => {
         let obj = response.data;
         console.log(obj.product);
         setProducts(obj.product);
       })
-      .catch((error) => {
+      .catch(error => {
         alert(error);
       });
   };
+
+  function redirectToReport(productId) {
+    navigate("/product/" + productId, { state: productId }); // ??? I'm not sure if this is the right way
+  }
 
   return (
     <div className="productList">
@@ -50,8 +58,14 @@ const ProductPage = () => {
               <p class="wrapText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere massa condimentum arcu volutpat congue. Sed ut mollis augue. Quisque vel lobortis orci, sed dictum mi. Integer ut velit et lorem sagittis porttitor. Cras a aliquam purus, ut fermentum massa. Donec sed sodales neque. Donec sollicitudin aliquam ullamcorper. Cras cursus auctor rutrum.
 
 Nunc eu ante eget leo cursus dictum quis non urna. Quisque gravida, nibh non malesuada sodales, sapien dolor mattis massa, quis rutrum nisi nunc quis mauris. Cras ac felis sed quam posuere molestie. Maecenas convallis nibh non lacus feugiat, nec tempor arcu accumsan. Etiam faucibus elit est, et sollicitudin mi dignissim sed. Nulla lacinia molestie convallis. Pellentesque a porttitor ligula, id facilisis metus. Proin ornare sagittis dolor, ac accumsan dolor pulvinar quis. Fusce sit amet mi semper orci lobortis maximus quis non arcu. Mauris eleifend aliquet vulputate.</p>
-
+            <a
+              onClick={() => {
+                redirectToReport(product._id);
+              }}
+            >
+            </a>
             </div>
+            
           </div>
             
         ))}
