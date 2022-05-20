@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-//import { useHistory } from "react-router-dom";
-import styles from "../css/product.css";
-
-import ReactDOM from "react-dom";
-import { QRCodeSVG } from "qrcode.react";
-=======
 import { useNavigate } from "react-router-dom";
->>>>>>> 3b548b8a2da9c3638c02008822088d710d4cdd73
 
 import axios from "axios";
 
