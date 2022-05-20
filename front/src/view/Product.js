@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 //import { useHistory } from "react-router-dom";
+import styles from "../css/product.css";
 
 import ReactDOM from "react-dom";
 import { QRCodeSVG } from "qrcode.react";
@@ -33,14 +34,27 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="product list">
-      <ul>
-        {products.map((product) => (
-          <li>
-            {product.name}, {product.price} <img src={product.img} />
-          </li>
+    <div className="productList">
+        {products.map((product, index) => (
+
+          // if (index %2 = ) {
+
+          // }
+          <div className="productCart">
+            <div className="leftImage">
+              <h3 class="productHeader">{product.name}</h3> <br />
+              <p class="productPrice">{product.price} €</p><br />
+              <img className="productImg" src={product.img} />
+            </div>
+            <div className="centerText">
+              <p class="wrapText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere massa condimentum arcu volutpat congue. Sed ut mollis augue. Quisque vel lobortis orci, sed dictum mi. Integer ut velit et lorem sagittis porttitor. Cras a aliquam purus, ut fermentum massa. Donec sed sodales neque. Donec sollicitudin aliquam ullamcorper. Cras cursus auctor rutrum.
+
+Nunc eu ante eget leo cursus dictum quis non urna. Quisque gravida, nibh non malesuada sodales, sapien dolor mattis massa, quis rutrum nisi nunc quis mauris. Cras ac felis sed quam posuere molestie. Maecenas convallis nibh non lacus feugiat, nec tempor arcu accumsan. Etiam faucibus elit est, et sollicitudin mi dignissim sed. Nulla lacinia molestie convallis. Pellentesque a porttitor ligula, id facilisis metus. Proin ornare sagittis dolor, ac accumsan dolor pulvinar quis. Fusce sit amet mi semper orci lobortis maximus quis non arcu. Mauris eleifend aliquet vulputate.</p>
+
+            </div>
+          </div>
+            
         ))}
-      </ul>
     </div>
   );
 };
