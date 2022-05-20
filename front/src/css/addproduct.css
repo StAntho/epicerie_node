@@ -1,0 +1,28 @@
+.addproduct-button {
+    
+    cursor: pointer !important;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: #1D5C63!important;
+    color: white;
+   
+    height: 50%;
+    width: 10%;
+    align-items: center;
+    justify-content: center !important;
+    display: flex !important;
+    text-decoration: none;
+    font-size: 0.8em;
+    transition: all 0.2s;
+    margin-left: 2em;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.addproduct-button:hover{
+    border: 2px solid #417D7A!important;
+    background-color:white !important;
+    color: #417D7A!important;
+    text-shadow: none;
+
+}

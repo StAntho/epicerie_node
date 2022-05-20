@@ -47,5 +47,5 @@
 
 .product-seemore-button{
     width : 50% !important;
-
+    cursor: pointer;
 }

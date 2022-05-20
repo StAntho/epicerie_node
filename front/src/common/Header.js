@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "../css/header.css";
+import AddProduct from "../view/AddProduct";
 
 export default function AccountBar() {
   useEffect(() => {
@@ -8,7 +9,7 @@ export default function AccountBar() {
     logout();
   }, []);
 
-  let button = button => {
+  let button = (button) => {
     const isLoggedIn = localStorage.getItem("username");
     if (isLoggedIn) {
       return (
@@ -24,7 +25,14 @@ export default function AccountBar() {
     );
   };
 
-  let logout = logoutButton => {
+  let addproductbutton = (addproductbutton) => {
+    const isLoggedIn = localStorage.getItem("username");
+    if (isLoggedIn) {
+      return <AddProduct />;
+    }
+  };
+
+  let logout = (logoutButton) => {
     const isLoggedIn = localStorage.getItem("username");
     if (isLoggedIn) {
       return (
@@ -45,6 +53,7 @@ export default function AccountBar() {
     <>
       <div className="accountBar">
         <h1 className="headerTitle"> La petite épicerie</h1>
+        {addproductbutton()}
         {button()}
         {logout()}
       </div>
